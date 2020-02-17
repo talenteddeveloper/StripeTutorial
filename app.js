@@ -7,6 +7,7 @@ app.listen(3000, function () {
 });
 
 //create new customer
+
 var createCustomer = function () {
     var param ={};
     param.email ="mike@gmail.com";
@@ -27,4 +28,23 @@ var createCustomer = function () {
 
 }
 
-createCustomer();
+//createCustomer();
+
+var retrieveCustomer = function () {
+
+    stripe.customers.retrieve("cus_Gi1jjdxYhsaMN2", function (err,customer) {
+        if(err)
+        {
+            console.log("err: "+err);
+        }if(customer)
+        {
+            console.log("success: "+JSON.stringify(customer, null, 2));
+        }else{
+            console.log("Something wrong")
+        }
+    })
+}
+retrieveCustomer();
+
+
+

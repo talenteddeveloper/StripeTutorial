@@ -68,7 +68,24 @@ var createToken = function () {
         }
     })
 }
-createToken();
+//createToken();
+
+var addCardToCustomer = function () {
+
+    stripe.customers.createSource('cus_Gi1jjdxYhsaMN2',{source: 'tok_1GAcj5CEXnEqdvqzXq4VFPGJ'}, function (err,card) {
+        if(err)
+        {
+            console.log("err: "+err);
+        }if(card)
+        {
+            console.log("success: "+JSON.stringify(card, null, 2));
+        }else{
+            console.log("Something wrong")
+        }
+    })
+}
+
+addCardToCustomer();
 
 
 

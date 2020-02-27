@@ -85,7 +85,28 @@ var addCardToCustomer = function () {
     })
 }
 
-addCardToCustomer();
+//addCardToCustomer();
 
 
+var chargeCustomerThroughCustomerID = function () {
 
+    var param = {
+        amount: '2000',
+        currency: 'usd',
+        description:'First payment',
+        customer:'cus_Gi1jjdxYhsaMN2'
+    }
+
+    stripe.charges.create(param, function (err,charge) {
+        if(err)
+        {
+            console.log("err: "+err);
+        }if(charge)
+        {
+            console.log("success: "+JSON.stringify(charge, null, 2));
+        }else{
+            console.log("Something wrong")
+        }
+    })
+}
+chargeCustomerThroughCustomerID();

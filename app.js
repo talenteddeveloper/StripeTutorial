@@ -109,4 +109,28 @@ var chargeCustomerThroughCustomerID = function () {
         }
     })
 }
-chargeCustomerThroughCustomerID();
+//chargeCustomerThroughCustomerID();
+
+var chargeCustomerThroughTokenID = function () {
+
+    var param = {
+        amount: '2000',
+        currency: 'usd',
+        description:'First payment',
+        source:'tok_1GFGKuCEXnEqdvqz10yhHl8s'
+    }
+
+    stripe.charges.create(param, function (err,charge) {
+        if(err)
+        {
+            console.log("err: "+err);
+        }if(charge)
+        {
+            console.log("success: "+JSON.stringify(charge, null, 2));
+        }else{
+            console.log("Something wrong")
+        }
+    })
+}
+
+chargeCustomerThroughTokenID();

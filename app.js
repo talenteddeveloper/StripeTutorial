@@ -133,4 +133,22 @@ var chargeCustomerThroughTokenID = function () {
     })
 }
 
-chargeCustomerThroughTokenID();
+//chargeCustomerThroughTokenID();
+
+var getAllCustomers = function () {
+
+
+    stripe.customers.list({limit: 4},function (err,customers) {
+        if(err)
+        {
+            console.log("err: "+err);
+        }if(customers)
+        {
+            console.log("success: "+JSON.stringify(customers.data, null, 2));
+        }else{
+            console.log("Something wrong")
+        }
+    })
+}
+
+getAllCustomers();
